@@ -43,7 +43,10 @@ bakedTexture.colorSpace = THREE.SRGBColorSpace;
  * Materials
  */
 // Baked material
-const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture });
+const bakedMaterial = new THREE.MeshBasicMaterial({
+    map: bakedTexture,
+    side: THREE.DoubleSide,
+});
 
 // Portal light material
 const portalLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff }); // this is BRUNO'S lamp color, not your own project's
