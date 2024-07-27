@@ -37,6 +37,7 @@ gltfLoader.setDRACOLoader(dracoLoader);
  */
 const bakedTexture = textureLoader.load("baked.jpg");
 bakedTexture.flipY = false; // Imported textures with uv unwrapping and baking will always be flipped so this fixes the issue
+bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
 /**
  * Materials
