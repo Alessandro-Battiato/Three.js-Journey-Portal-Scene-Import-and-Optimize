@@ -45,6 +45,9 @@ bakedTexture.colorSpace = THREE.SRGBColorSpace;
 // Baked material
 const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture });
 
+// Pole light material
+const poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffe5 }); // this is BRUNO'S lamp color, not your own project's
+
 /**
  * Model
  */
@@ -52,6 +55,19 @@ gltfLoader.load("portal.glb", (gltf) => {
     gltf.scene.traverse((child) => {
         child.material = bakedMaterial;
     });
+    const poleLightMesh = gltf.scene.children.find((child) => {
+        return child.name === "portalLight";
+    });
+    const poleLightAMesh = gltf.scene.children.find((child) => {
+        return child.name === "PoleLightA";
+    });
+    const poleLightBMesh = gltf.scene.children.find((child) => {
+        return child.name === "PoleLightB";
+    });
+
+    poleLightAMesh.material = poleLightMaterial;
+    poleLightBMesh.material = poleLightMaterial;
+
     scene.add(gltf.scene);
 });
 
